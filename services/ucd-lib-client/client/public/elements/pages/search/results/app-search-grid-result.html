@@ -1,0 +1,95 @@
+<style include="shared-styles">
+  :host {
+    display: block;
+    width: var(--grid-cell-width);
+    background-color: white;
+    cursor: pointer;
+  }
+
+  :host(:hover), :host(:focus) {
+    border: 2px solid var(--default-secondary-color);
+    margin: -2px 0 0 -2px;
+    outline: none !important;
+  }
+
+  @keyframes show-img {
+    from {opacity: 0}
+    to {opacity: 1}
+  }
+
+  img {
+    animation: show-img 300ms linear;
+    box-sizing: border-box;
+    display:none;
+    /* width: var(--grid-cell-width); */
+    /* background-size: cover;
+    background-color: transparent;
+    background-position: center center; */
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+  }
+
+  .collection-name {
+    text-transform: uppercase;
+    font-size: var(--font-size-sm);
+    color: var(--gray-text);
+  }
+
+  .year {
+    color: var(--gray-text);
+    flex: 1;
+  }
+
+  .footer {
+    display : flex; 
+    align-items : center; 
+    margin-top : 10px;
+  }
+
+  h4 {
+    margin: 10px 0;
+    color: var(--default-primary-color);
+  }
+
+  iron-icon {
+    color: var(--default-primary-color);
+  }
+
+  .image {
+    position: relative; 
+    background-size: cover;
+    background-color: transparent;
+    background-position: center center;
+    width: 250px; 
+  }
+
+</style>
+
+<div 
+  hidden$="[[!isImage]]" 
+  class="image" 
+  id="imgRoot"
+  style$="background-image: url('[[imgThumbail]]'); height:[[imgHeight]]px">
+  <img id="img" src$="[[imgUrl]]" style$="height:[[imgHeight]]px; width: 100%" onload="this.style.display='block';" />
+  <!-- <div style$="background-image: url('[[imgThumbail]]');height:[[imgHeight]]px" class="img" ></div>
+  <div style$="background-image: url('[[imgUrl]]');height:[[imgHeight]]px" class="img"></div> -->
+</div>
+
+
+<div style="padding: 15px">
+  <div class="collection-name">[[collectionName]]</div>
+
+  <h4>[[name]]</h4>
+
+  <template is="dom-repeat" items="[[creator]]">
+    <app-search-result-creator label="[[item]]"></app-search-result-creator>
+  </template>
+
+  <div class="footer">
+    <div class="year">[[year]]</div>
+    <div>
+      <iron-icon icon="fin:image" hidden$="[[!isImage]]"></iron-icon>
+    </div>
+  </div>
+</div>

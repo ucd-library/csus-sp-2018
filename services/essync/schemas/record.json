@@ -1,0 +1,93 @@
+{
+  "properties" : {
+
+    "@id" : {
+      "type" : "keyword"
+    },
+
+    "id" : {
+      "type" : "keyword" 
+    },
+
+    "type" : {
+      "type" : "keyword" 
+    },
+
+    "identifier" : {
+      "type" : "keyword" 
+    },
+
+    "isPartOf" : {
+      "type" : "keyword" 
+    },
+
+    "abouts" : {
+      "type" : "text",
+      "fields": {
+        "raw": { 
+          "type":  "keyword"
+        }
+      }
+    },
+
+    "license" : {
+      "type" : "keyword"
+    },
+
+    "collectionId" : {
+      "type" : "keyword"
+    },
+
+    "isRootRecord" : {
+      "type" : "boolean"
+    },
+
+    "creators" : {
+      "type" : "keyword"
+    },
+
+    "created" : {
+      "type" : "date",
+      "format" : "date_optional_time"
+    },
+
+    "createdBy" : {
+      "type" : "keyword"
+    },
+
+    "hasParent" : {
+      "type" : "keyword"
+    },
+
+    "fileFormats" : {
+      "type" : "keyword"
+    },
+
+    "lastModified" : {
+      "type" : "date",
+      "format" : "date_optional_time"
+    },
+
+    "yearPublished" : {
+      "type" : "integer"
+    },
+
+    "lastModifiedBy" : {
+      "type" : "keyword"
+    },
+
+    "name" : {
+      "type": "text",
+      "fields": {
+        "raw": { 
+          "type":  "keyword"
+        }
+      }
+    },
+
+    "indexableContent" : {
+      "type": "text"
+    }
+
+  }
+}
