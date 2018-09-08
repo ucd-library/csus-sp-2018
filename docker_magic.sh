@@ -8,8 +8,13 @@ printf "Are you running this instance locally on your own machine or on the UC D
 
 read env
 
+printf "Please enter your email address\n"
+
+read email
+
 if [ ${identifer} = "cl" ]; then
     USERNAME="chas_"
+    EMAIL="ctlevinsky@gmail.com"
     PORT="4001"
 
 elif [ ${identifer} = "jr" ]; then
@@ -50,9 +55,10 @@ if [ ${env} = "U" ]; then
     FIN_URL="http://p$PORT.csus.casil.ucdavis.edu"
 
 elif [ ${env} = "L" ]; then
-    printf "You have chosen to create an instance locally. \nWhat port do you want to run it on?\n"
-    read LOCALPORT
-    FIN_URL="http://localhost:$LOCALPORT"
+    printf "You have chosen to create an instance locally."
+
+    PORT=3000
+    FIN_URL="http://localhost:3000"
 
  else
     printf "Error Instance Identifier Not Valid. Aborting"
@@ -68,5 +74,13 @@ export PORT=$PORT
 
 docker-compose -f docker_compose.yml up -d
 
-printf "Running at $FIN_URL"
+printf "Running at $FIN_URL\n"
 
+USER=$USERNAME
+EMAIL=$EMAIL
+
+
+docker-compose -f docker_compose.yml exec basic-auth node service/cli create-user -u $USER -p laxlax -e $EMAIL
+docker-compose -f docker_compose.yml exec server node app/cli admin add-admin -u ${USER}@local
+source env_vars.env; fin jwt encode --admin --save=true $JWT_SECRET $JWT_ISSUER ${USER}@local
+fin config set host $FIN_URL

@@ -9,3 +9,12 @@ server/backups
 services/ucd-lib-client/client/public/js/*bundle*.js
 services/ucd-lib-client/client/public/js/*ie-bundle*.js
 loaded-transforms
+\.idea/csus-sp-2018\.iml
+
+\.idea/misc\.xml
+
+\.idea/modules\.xml
+
+\.idea/vcs\.xml
+
+\.idea/workspace\.xml
