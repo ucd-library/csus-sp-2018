@@ -3,7 +3,7 @@ version: '2'
 services:
 
   server:
-    container_name: "${USERNAME}server"
+    container_name: "${USERNAME}_server"
     build: ./server
     volumes:
       - ./server/cli:/app/cli
@@ -24,7 +24,7 @@ services:
       - FIN_URL=${FIN_URL}
 
   fcrepo:
-    container_name: "${USERNAME}fc_repo"
+    container_name: "${USERNAME}_fc_repo"
     build: ./fcrepo
     volumes:
       - fedora-data:/var/lib/jetty/fedora-data
@@ -34,9 +34,11 @@ services:
       - 61613:61613
     environment:
       - FIN_URL=${FIN_URL}
+    env_file:
+    - ./env_vars.env
 
   elasticsearch:
-    container_name: "${USERNAME}elastic_search"
+    container_name: "${USERNAME}_elastic_search"
     image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
     environment:
       - bootstrap.memory_lock=true
@@ -54,7 +56,7 @@ services:
       - fcrepo
 
   redis:
-    container_name: "${USERNAME}redis"
+    container_name: "${USERNAME}_redis"
     image: redis:3.2
     volumes:
       - redis-data:/data
@@ -64,7 +66,7 @@ services:
       - fcrepo
 
   trustedproxy:
-    container_name: "${USERNAME}trusted_proxy"
+    container_name: "${USERNAME}_trusted_proxy"
     build: ./services/trusted-proxy
     volumes:
       - ./services/trusted-proxy/index.js:/service/index.js
@@ -75,7 +77,7 @@ services:
     command: node service
 
   loris:
-    container_name: "${USERNAME}loris"
+    container_name: "${USERNAME}_loris"
     build: ./services/loris
     volumes:
       - loris-data:/usr/local/share/images/loris
@@ -87,7 +89,7 @@ services:
       - fcrepo
 
   essync:
-    container_name: "${USERNAME}es_sync"
+    container_name: "${USERNAME}_es_sync"
     build: ./services/essync
     volumes:
       - ./services/essync/lib:/service/lib
@@ -103,7 +105,7 @@ services:
     command: node service
 
   ucd-lib-client:
-    container_name: "${USERNAME}ucd_library_client"
+    container_name: "${USERNAME}_ucd_library_client"
     build: ./services/ucd-lib-client
     volumes:
       - ./services/ucd-lib-client/index.js:/service/index.js
@@ -121,7 +123,7 @@ services:
     command: node service
 
   basic-auth:
-    container_name: "${USERNAME}basic_auth"
+    container_name: "${USERNAME}_basic_auth"
     build: ./services/basic-auth
     volumes:
       - ./services/basic-auth/index.js:/service/index.js

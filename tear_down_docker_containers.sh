@@ -5,35 +5,35 @@ printf "\n\nAvailable options:\n\tcl (Chas)\t|\tjr (James) \n\tns (Nima)\t|\teh 
 read identifer
 
 if [ ${identifer} = "cl" ]; then
-    USERNAME="chas_"
+    USERNAME="chas"
     PORT="4001"
 
 elif [ ${identifer} = "jr" ]; then
-    USERNAME="james_"
+    USERNAME="james"
     PORT="4002"
 
 elif [ ${identifer} = "ns" ]; then
-    USERNAME="nima_"
+    USERNAME="nima"
     PORT="4003"
 
 elif [ ${identifer} = "eh" ]; then
-    USERNAME="ehsan_"
+    USERNAME="ehsan"
     PORT="4004"
 
 elif [ ${identifer} = "er" ]; then
-    USERNAME="eli_"
+    USERNAME="eli"
     PORT="4005"
 
 elif [ ${identifer} = "dm" ]; then
-    USERNAME="derek_"
+    USERNAME="derek"
     PORT="4006"
 
 elif [ ${identifer} = "ts" ]; then
-    USERNAME="test_"
+    USERNAME="test"
     PORT="4007"
 
 elif [ ${identifer} = "ps" ]; then
-    USERNAME="production_"
+    USERNAME="production"
     PORT="4008"
 
 else
