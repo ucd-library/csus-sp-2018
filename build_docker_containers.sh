@@ -71,6 +71,8 @@ export FIN_URL=$FIN_URL
 export USERNAME=$USERNAME
 export PORT=$PORT
 
+sudo sysctl -w vm.max_map_count=262144
+
 
 docker-compose -f docker_compose.yml up -d
 
