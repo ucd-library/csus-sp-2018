@@ -1,0 +1,171 @@
+version: '3'
+
+###
+# Demo Fin Server from deployed DockerHub container images
+###
+services:
+
+  ###
+  # Font End NodeJS Application Server
+  ###
+  server:
+    container_name: "${USERNAME}_server"
+    image: ucdlib/fin-server:1.0.3
+    env_file:
+      - fin-example.env
+    volumes:
+      - ./server/app/cli:/app/cli
+      - ./server/app/controllers:/app/controllers
+      - ./server/app/lib:/app/lib
+      - ./server/app/models:/app/models
+      - ./conf/default-services.js:/etc/fin/default-services.js
+      - ./backups:/fcrepo-backups
+    ports:
+      - $PORT:3001
+    depends_on:
+      - fcrepo
+      - redis
+      - elasticsearch
+    environment:
+    - FIN_URL=${FIN_URL}
+
+  ###
+  # Fedora Repository
+  ###
+  fcrepo:
+    container_name: "${USERNAME}_fc_repo"
+    image: ucdlib/fin-fcrepo:v1.0.0
+    env_file:
+      - fin-example.env
+    environment:
+    - FIN_URL=${FIN_URL}
+    volumes:
+      - fedora-data:/var/lib/jetty/fedora-data
+      - ./backups:/var/lib/jetty/fcrepo-backups
+
+###
+  # Session, admin store
+  ###
+  redis:
+    container_name: "${USERNAME}_redis"
+    image: redis:3.2
+    volumes:
+      - redis-data:/data
+    depends_on:
+      - fcrepo
+
+  ###
+  # UC DAMS Client UI
+  ###
+  ucd-lib-client:
+    container_name: "${USERNAME}_ucd_library_client"
+    image: ucdlib/fin-ucd-lib-client:0.1.0
+    volumes:
+      - ./services/ucd-lib-client/app/index.js:/service/index.js
+      - ./services/ucd-lib-client/app/config.js:/service/config.js
+      - ./services/ucd-lib-client/app/client:/service/client
+      - ./services/ucd-lib-client/app/controllers:/service/controllers
+      - ./services/ucd-lib-client/app/lib:/service/lib
+      - ./services/ucd-lib-client/app/models:/service/models
+    env_file:
+      - fin-example.env
+    environment:
+      - FIN_URL=${FIN_URL}
+    depends_on:
+      - elasticsearch
+
+  ###
+  # Search
+  ###
+  elasticsearch:
+    container_name: "${USERNAME}_elastic_search"
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+      - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    depends_on:
+      - fcrepo
+
+  ###
+  # Trusted Proxy for Services
+  ###
+  trustedproxy:
+    container_name: "${USERNAME}_trusted_proxy"
+    image: ucdlib/fin-trusted-proxy:1.0.0
+    env_file:
+      - fin-example.env
+    depends_on:
+      - fcrepo
+
+  ###
+  # IIIF Service
+  ###
+  loris:
+    container_name: "${USERNAME}_loris"
+    image: ucdlib/fin-loris-service:v0.0.2
+    env_file:
+      - fin-example.env
+    depends_on:
+      - fcrepo
+    volumes:
+      - loris-data:/usr/local/share/images/loris
+      - loris-cache:/var/cache/loris
+      - ./conf/loris/loris2.conf:/opt/loris/etc/loris2.conf
+      - ./conf/loris/start.py:/opt/loris/loris/start.py
+
+  ###
+  # ES Indexer
+  ###
+  essync:
+    container_name: "${USERNAME}_essync"
+    image: ucdlib/fin-essync-service:0.1.0
+    env_file:
+      - fin-example.env
+    environment:
+      - FIN_URL=${FIN_URL}
+    depends_on:
+      - server
+
+  ###
+  # Basic Username/Password AuthenticationService
+  ###
+  basic-auth:
+    container_name: "${USERNAME}_basic_auth"
+    image: ucdlib/fin-basic-auth:0.0.1
+    env_file:
+      - fin-example.env
+    volumes:
+    - ./services/basic-auth/app/index.js:/service/index.js
+    - ./services/basic-auth/app/cli.js:/service/cli.js
+    - ./services/basic-auth/app/controller.js:/service/controller.js
+    - ./services/basic-auth/app/model.js:/service/model.js
+    - ./services/basic-auth/app/lib:/service/lib
+    - ./services/basic-auth/app/public:/service/public
+    environment:
+    - FIN_URL=${FIN_URL}
+    depends_on:
+      - server
+
+###
+# Docker data volumes
+###
+volumes:
+  fedora-data:
+    driver: local
+  fedora-serialized-data:
+    driver: local
+  es-data:
+    driver: local
+  redis-data:
+    driver: local
+  loris-data:
+    driver: local
+  loris-cache:
+    driver: local

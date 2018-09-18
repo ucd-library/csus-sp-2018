@@ -1,0 +1,22 @@
+# Emacs files
+.#*
+*~
+.DS_Store
+
+# Production Stuff
+production/*.env
+production/*.yml
+# test files
+index_terms.txt
+ldp.ttl
+
+collection/example_4-wine-labels/**/label_this.txt
+collection/example_4-wine-labels/**/google-vision.txt
+
+**/*.hdt.*
+/server/app/node_modules/
+/services/ucd-lib-client/app/node_modules/
+/services/basic-auth/app/node_modules/
+/services/ucd-lib-client/app/client/public/node_modules/
+
+\.idea/

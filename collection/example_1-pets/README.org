@@ -1,0 +1,74 @@
+:PROPERTIES:
+:header-args:    :exports both :eval no-export :cache yes
+:END:
+
+* Example 1 - Pets
+
+This example collection is something like the most basic type of collection that
+can be added into the system.  This example contains a simple set of digital
+images, with a small amount of data about the pets.  Our goal is to take these
+data and add them into our DAMs.
+
+** Administrative Privledges
+
+If you have gone through the installation steps, this is good place to come as
+your next step.  The steps below assume that you are currently logged in to your
+fin server, as an admin.  How to do this is explained in the installation
+instructions.  You can verify this with the following command, which access the
+root location, and verifies you can write to this location.
+
+#+BEGIN_SRC bash  :results type scalar
+fin http get -P b / | grep fedora:writable
+#+END_SRC
+
+#+RESULTS[0ba08e1d3cd467885c11abdb76cb91efc0dda7b0]:
+: true
+
+
+** Make a new Collection
+
+Let's start with the collection description.  That's stored in the `index.ttl`
+file.  This file describes the collection. `index.ttl` is a pretty easy file to
+understand, you'll see a title, and description and some keywords.  If you're
+savy with your linked data, you will see that by default we like to use
+schema.org for our descriptions.  This is not a requirement for the server, but
+lots of the DAMS setup expects to use this schema when indexing collections and
+data.
+
+
+#+INCLUDE: "index.ttl" example ttl
+
+fin has some special commands to create and administrate collections.  Let's
+go ahead and create our new collection.
+
+#+BEGIN_SRC sh :results type scalar :exports both :eval no-export
+fin collection create example_1-pets index.ttl
+#+END_SRC
+
+#+RESULTS:
+: New collection created at: /collection/example_1-pets
+
+This command creates a new container in our system, for the new collection, but
+it does more than that. It sets up some default access control conditions, and
+organizes standard locations for things like groups for this collection. Also,
+with the addition of the metadata in our index.ttl file, it also describes the
+contents of this collection, which is then used in the default Interface for the
+repository. After this step, you should be able to navigate to
+http://localhost:3000/fcrepo/rest/collection, and see your newly created
+example_1-pets collection. You may need to login to your account via
+http://localhost:3000/auth/basic/login.html to give your browser access.
+
+** Collection Access Control
+By default new collections are not publicly available.  Let's make this
+available for anyone.
+
+#+BEGIN_SRC bash :results type scaler
+fin collection acl user add example_1-pets foaf:Agent r
+#+END_SRC
+
+#+RESULTS:
+: Authorization added /collection/example_1-pets/.acl/u/foaf:Agent/collection/example_1-pets/r
+
+** Add Example Data
+
+Now we want to add some additional

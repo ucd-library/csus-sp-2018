@@ -1,0 +1,145 @@
+{
+  "@context": {
+    "lastModifiedBy": "lastModified:By",
+    "subject": "dc:subject",
+    "description": "dc:description",
+    "creator": {
+      "@id": "ns002:creator",
+      "@type": "@id"
+    },
+    "identifier": "dc:identifier",
+    "writable": {
+      "@id": "fedora:writable",
+      "@type": "xs:#boolean"
+    },
+    "lastModified": {
+      "@id": "fedora:lastModified",
+      "@type": "xs:#dateTime"
+    },
+    "hasMimeType": "ebucore:hasMimeType",
+    "hasSize": {
+      "@id": "premis:hasSize",
+      "@type": "xs:#long"
+    },
+    "created": "ns002:created",
+    "source": "ns002:source",
+    "hasMessageDigest": {
+      "@id": "premis:hasMessageDigest",
+      "@type": "@id"
+    },
+    "rights": {
+      "@id": "ns002:rights",
+      "@type": "@id"
+    },
+    "filename": "ebucore:filename",
+    "hasFixityService": {
+      "@id": "fedora:hasFixityService",
+      "@type": "@id"
+    },
+    "title": "ns002:title",
+    "type": "ns002:type",
+    "memberOf": {
+      "@id": "ns003:memberOf",
+      "@type": "@id"
+    },
+    "describedby": {
+      "@id": "http://www.iana.org/assignments/relation/describedby",
+      "@type": "@id"
+    },
+    "createdBy": "fedora:createdBy",
+    "publisher": "dc:publisher",
+    "hasParent": {
+      "@id": "fedora:hasParent",
+      "@type": "@id"
+    },
+    "premis": "http://www.loc.gov/premis/rdf/v1#",
+    "test": "info:fedora/test/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "ns004": "http://fedora.info/definitions/v4/webac#",
+    "ns003": "http://pcdm.org/models#",
+    "ns002": "http://purl.org/dc/terms/",
+    "ns001": "http://fin.library.ucdavis.edu/",
+    "xsi": "xs:-instance",
+    "ns007": "http://library.ucdavis.edu/wine/",
+    "xmlns": "http://www.w3.org/2000/xmlns/",
+    "ns006": "http://www.wikidata.org/prop/direct/",
+    "ns005": "http://www.w3.org/ns/auth/acl#",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "fedora": "http://fedora.info/definitions/v4/repository#",
+    "xml": "http://www.w3.org/XML/1998/namespace",
+    "ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#",
+    "ldp": "http://www.w3.org/ns/ldp#",
+    "xs": "http://www.w3.org/2001/XMLSchema",
+    "fedoraconfig": "http://fedora.info/definitions/v4/config#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "authz": "http://fedora.info/definitions/v4/authorization#"
+  },
+  "@graph": [
+    {
+      "@id": "http://dams-sandbox.library.ucdavis.edu/fcrepo/rest/collection/eastman-example/members/B-10004",
+      "@type": [
+        "fedora:Resource",
+        "ldp:NonRDFSource",
+        "fedora:Binary"
+      ],
+      "fedora:created": {
+        "@type": "xs:#dateTime",
+        "@value": "2017-12-16T01:11:31.268Z"
+      },
+      "createdBy": "fin-example-user",
+      "hasFixityService": "http://dams-sandbox.library.ucdavis.edu/fcrepo/rest/collection/eastman-example/members/B-10004/fcr:fixity",
+      "hasParent": "http://dams-sandbox.library.ucdavis.edu/fcrepo/rest/collection/eastman-example/members",
+      "lastModified": "2017-12-16T01:11:31.268Z",
+      "lastModifiedBy": "fin-example-user",
+      "fedora:writable": true,
+      "memberOf": "http://dams-sandbox.library.ucdavis.edu/fcrepo/rest/collection/eastman-example",
+      "dc:creator": "Eastman, Jervie Henry",
+      "description": "Road on side of mountain with river and trees in background.",
+      "identifier": [
+        "http://ark.cdlib.org/ark:/13030/tf2p3003rh",
+        "B-10004"
+      ],
+      "publisher": "University of California, Davis. General Library. Dept. of Special Collections",
+      "dc:rights": "copyrighted",
+      "subject": [
+        "Rocks",
+        "Roads",
+        "Trees",
+        "Rivers"
+      ],
+      "created": "1956",
+      "creator": "http://id.loc.gov/authorities/names/no2014099630",
+      "ns002:identifier": "ark:/13030/tf2p3003rh",
+      "ns002:publisher": {
+        "@id": "http://id.loc.gov/authorities/names/no2008108707"
+      },
+      "rights": "http://rightsstatements.org/vocab/InC-NC/1.0/",
+      "source": "1 photographic negative : b&w : 5 x 7 in.",
+      "ns002:subject": [
+        {
+          "@id": "http://id.worldcat.org/fast/fst01099409"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/fst01098312"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/fst01155984"
+        },
+        {
+          "@id": "http://id.worldcat.org/fast/fst01098511"
+        }
+      ],
+      "title": "Highway Along Salmon River, Calif",
+      "type": "image",
+      "filename": "",
+      "hasMimeType": "image/tiff",
+      "describedby": "http://dams-sandbox.library.ucdavis.edu/fcrepo/rest/collection/eastman-example/members/B-10004/fcr:metadata",
+      "hasMessageDigest": [
+        "urn:sha256:1a4bf928196f1abe0467fd81765b6348e6b23d345e12a572671cedc443c9ff80",
+        "urn:sha1:72447b66b568d1c3207bb63ccdcc98be2d573031"
+      ],
+      "hasSize": "7666831"
+    }
+  ]
+}

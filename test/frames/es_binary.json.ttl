@@ -1,0 +1,18 @@
+@prefix fin: <http://fin.library.ucdavis.edu/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix ebucore: <http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#> .
+@prefix ldp: <http://www.w3.org/ns/ldp#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix fedora:  <http://fedora.info/definitions/v4/repository#> .
+
+<> a fin:Frame;
+	 rdfs:label "es";
+	 fin:frameType fedora:Binary ;
+	 dc:publisher "University of California, Davis. General Library.";
+   dct:rights <http://rightsstatements.org/vocab/InC-NC/1.0/>;
+   ebucore:hasMimeType "text/json";
+	 dc:title "Default Elastic Search JSON-LD Frame";
+   dc:identifier "eliasticsearch";
+   dct:type "json";
+	 dc:description "This frame is our default generic frame.  It should work pretty well for any binary data that follows our core metadata."

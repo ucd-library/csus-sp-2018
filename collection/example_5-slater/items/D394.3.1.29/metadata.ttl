@@ -1,0 +1,12 @@
+@prefix schema: <http://schema.org/>.
+@prefix w: <http://library.ucdavis.edu/wine-ontology#>.
+@prefix fast: <http://id.worldcat.org/fast/>.
+@prefix wdt: <http://www.wikidata.org/prop/direct/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+<> rdf:type schema:CreativeWork;
+    schema:name "Publications -- University of California, Davis -- Homecoming 1965";
+    schema:description "  Arranged chronologically. Contains clippings and serials.  Arranged by subject in the following subseries: University of California, Davis; World War I; Seventh Olympic Games; Eighth Olympic Games; Travel; Yolo County (Calif.); and Other. Contains serials, clippings, maps, and travel guides.";
+    schema:contentReferenceTime "1912/2004";
+    schema:keywords "College sports -- California -- Davis", "Festivals--California--Davis", "Slater, Colby E. -- Archives", "University of California, Davis -- History";
+    schema:identifier "D394.3.1.29".

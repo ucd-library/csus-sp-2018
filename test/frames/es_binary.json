@@ -1,0 +1,41 @@
+{
+  "@context": {
+    "@vocab": "http://purl.org/dc/elements/1.1/",
+    "fedora": "http://fedora.info/definitions/v4/repository#",
+    "dct": "http://purl.org/dc/terms/",
+    "xs": "http://www.w3.org/2001/XMLSchema#",
+    "pcdm": "http://pcdm.org/models#",
+    "ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#",
+    "format":{
+      "@id":"ebucore:hasMimeType"
+    },
+    "dc:subject":{ "@id":"subject" },
+    "dct:subject":{ "@type":"@id" },
+    "dct:creator":{ "@type":"@id" },
+    "dct:publisher":{ "@type":"@id" },
+    "dct:rights":{"@type":"@id" },
+    "created" : { "@id":"dct:created" },
+    "title" : { "@id":"dct:title" },
+    "fedora:created": { "@type": "xs:dateTime" },
+    "fedora:lastModified": { "@type": "xs:dateTime" },
+    "pcdm:memberOf":{"@type":"@id"}
+  },
+  "@type": "fedora:Binary",
+  "@explicit":true,
+  "title" : {},
+  "creator":{},
+  "rights":{},
+  "description":{},
+  "subject":{},
+  "dc:subject":{},
+  "created":{},
+  "dct:creator":{},
+  "dct:rights":{},
+  "dct:subject":{},
+  "dct:created":{},
+  "publisher":{},
+  "dct:rights":{},
+  "fedora:created": {},
+  "fedora:lastModified": {},
+  "pcdm:memberOf":{}
+}

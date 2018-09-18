@@ -1,0 +1,9 @@
+@prefix schema: <http://schema.org/>.
+@prefix fast: <http://id.worldcat.org/fast/>.
+@prefix lcna: <http://id.loc.gov/authorities/names/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+
+<> a schema:Photograph, schema:CreativeWork;
+    schema:publisher lcna:no2008108707, "University of California, Davis. General Library. Dept. of Special Collections";
+    schema:license <http://rightsstatements.org/vocab/InC-NC/1.0/>;
+    schema:creator "Eastman, Jervie Henry", lcna:no2014099630.

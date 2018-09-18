@@ -1,0 +1,10 @@
+@prefix schema: <http://schema.org/>
+@prefix ldp:  <http://www.w3.org/ns/ldp#> .
+@prefix fin: <http://fin.library.ucdavis.edu/> .
+
+<>
+a ldp:DirectContainer, fin:Service;
+schema:title    "UC Davis Digital Collections";
+schema:publisher <lcna:no2008108707> , "University of California, Davis. General Library. Dept. of Special Collections" ;
+schema:dateCreated "2018";
+schema:description "This is the University of California's Digital Collection archive." .

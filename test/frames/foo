@@ -1,0 +1,51 @@
+{
+  "@context": {
+			"@vocab": "http://purl.org/dc/elements/1.1/",
+			"fedora": "http://fedora.info/definitions/v4/repository#",
+			"dct": "http://purl.org/dc/terms/",
+			"xs": "http://www.w3.org/2001/XMLSchema#",
+			"pcdm": "http://pcdm.org/models#",
+			"ebucore": "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#",
+			"eastman": "http://dams-sandbox.library.ucdavis.edu/fcrepo/rest/collection/eastman-example/members/",
+			"format":{
+					"@id":"ebucore:hasMimeType"
+			},
+			"dct:subject":{
+					"@type":"@id"
+			},
+			"dct:creator":{
+					"@type":"@id"
+			},
+			"dct:publisher":{
+					"@type":"@id"
+			},
+			"dct:rights":{
+					"@type":"@id"
+			},
+			"title" : {
+					"@id":"dct:title"
+			},
+			"fedora:created": {
+					"@type": "xs:dateTime"
+			},
+			"fedora:lastModified": {
+					"@type": "xs:dateTime"
+			},
+			"pcdm:memberOf":{
+					"@type":"@id"
+			}
+	},
+		"@type": "fedora:Binary",
+		"dct:title":{},
+		"dct:subject":{},
+		"subject":{},
+		"dct:created":{},
+		"dct:creator":{},
+		"dct:publisher":{},
+		"dct:rights":{},
+		"rights":{},
+		"title" : {},
+		"fedora:created": {},
+		"fedora:lastModified": {},
+		"pcdm:memberOf":{}
+}
