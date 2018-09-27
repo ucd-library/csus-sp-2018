@@ -14,7 +14,6 @@ read email
 
 if [ ${identifer} = "cl" ]; then
     USERNAME="chas"
-    EMAIL="ctlevinsky@gmail.com"
     PORT="4001"
 
 elif [ ${identifer} = "jr" ]; then
@@ -91,7 +90,7 @@ fin config set host $FIN_URL
 #docker exec --privileged ${USERNAME}_basic_auth npm install -g nodemon
 #docker exec --privileged ${USERNAME}_ucd_library_client npm install -g nodemon
 
-#fin http put -H prefer:return=minimal -H "Content-Type:text/turtle" -@ server.ttl -P h /
-#fin http get -P b /
+fin http put -H prefer:return=minimal -H "Content-Type:text/turtle" -@ server.ttl -P h /
+fin http get -P b /
 ## Now import the data
-#sudo ./import.sh
+sudo ./import.sh
